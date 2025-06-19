@@ -1,0 +1,21 @@
+
+CREATE TABLE IF NOT EXISTS public.role
+(
+    role_id integer NOT NULL,
+    role_name character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT "Role_pkey" PRIMARY KEY (role_id)
+)
+TABLESPACE pg_default;
+
+
+ALTER TABLE IF EXISTS public.role
+    OWNER to postgres;
+
+
+INSERT INTO public.role (role_id, role_name) VALUES
+(1, 'ผู้บริหาร'),
+(2, 'แอดมิน'),
+(3, 'เจ้าหน้าที่ประจำคณะ'),
+(4, 'เจ้าหน้าที่ภาควิชา'),
+(5, 'อาจารย์')
+ON CONFLICT (role_id) DO NOTHING; -- ป้องกัน error หาก role_id ซ้ำ
