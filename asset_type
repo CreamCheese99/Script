@@ -1,0 +1,34 @@
+
+CREATE TABLE IF NOT EXISTS public.asset_type
+(
+    asset_type_id integer NOT NULL DEFAULT nextval('typeasset_id_seq'::regclass),
+    asset_type_name character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT typeasset_pkey PRIMARY KEY (asset_type_id)
+)
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.asset_type
+    OWNER to postgres;
+
+-- เพิ่มข้อมูลประเภทครุภัณฑ์
+INSERT INTO public.asset_type (asset_type_name) VALUES
+('ครุภัณฑ์สำนักงาน'),
+('ครุภัณฑ์ยานพาหนะและขนส่ง'),
+('ครุภัณฑ์ไฟฟ้าและวิทยุ'),
+('ครุภัณฑ์ไฟฟ้าและวิทยุ-เครื่องกำเนิดไฟฟ้า'),
+('ครุภัณฑ์เขียนและเผยแพร่'),
+('ครุภัณฑ์การเกษตร-เครื่องมืออุปกรณ์'),
+('ครุภัณฑ์การเกษตร-เครื่องจักรกล'),
+('ครุภัณฑ์โรงงาน-เครื่องมืออุปกรณ์'),
+('ครุภัณฑ์โรงงาน-เครื่องจักรกล'),
+('ครุภัณฑ์ก่อสร้าง-เครื่องมือและอุปกรณ์'),
+('ครุภัณฑ์ก่อสร้าง-เครื่องจักรกล'),
+('ครุภัณฑ์วิทยาศาสตร์และการแพทย์'),
+('ครุภัณฑ์คอมพิวเตอร์'),
+('ครุภัณฑ์กีฬา-กายภาพ'),
+('ครุภัณฑ์สนาม'),
+('ครุภัณฑ์งานบ้านงานครัว'),
+('ครุภัณฑ์การศึกษา'),
+('ครุภัณฑ์ศิลปะ-นาฏศิลป์'),
+('ครุภัณฑ์อาวุธ')
+ON CONFLICT DO NOTHING; 
