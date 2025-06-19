@@ -1,0 +1,19 @@
+CREATE TABLE IF NOT EXISTS public.department
+(
+    department_name character varying COLLATE pg_catalog."default" NOT NULL,
+    department_id integer NOT NULL DEFAULT nextval('department_department_id_seq'::regclass),
+    CONSTRAINT department_pkey PRIMARY KEY (department_id)
+)
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.department
+    OWNER to postgres;
+
+-- เพิ่มข้อมูลภาควิชา / หน่วยงาน
+INSERT INTO public.department (department_name) VALUES
+('ครุศาสตร์วิศวกรรม'),
+('ครุศาสตร์อุตสาหกรรม'),
+('ครุศาสตร์เกษตร'),
+('ครุศาสตร์สถาปัตยกรรมและการออกแบบ'),
+('ส่วนสนับสนุนวิชาการ')
+ON CONFLICT DO NOTHING; 
